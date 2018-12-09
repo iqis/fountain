@@ -103,4 +103,5 @@ baltimore_catalog <- cagalog("https://data.baltimorecity.gov/")
 * Error handling faculty
 * Accept human-readable URLs directly copied from the browser address bar
 * Upload (write) faculty
+* Data type parsing from asset metadata
 * Integrate CKAN, BKAN, etc apart from Socrata?
