@@ -4,7 +4,7 @@
 \alias{soda}
 \title{Create a SODA request}
 \usage{
-soda(endpoint = NULL, domain, uuid, ...)
+soda(endpoint, domain, uuid, ...)
 }
 \arguments{
 \item{endpoint}{a url pointing to a SODA endpoint.}
