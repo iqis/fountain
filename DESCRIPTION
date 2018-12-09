@@ -1,0 +1,24 @@
+Package: fountain
+Title: R Client to Socrata Open Data API
+Version: 0.2.4
+Date: 2018-09-01
+Authors@R: person("Siqi", "Zhang", email = "iqis.gnahz@gmail.com", role = c("cre", "aut"))
+Description: Query, parse Socrata resources by building and submitting RESTful requests to Socrata Open Data API (SODA).
+Depends: 
+    R (>= 3.5.0),
+    dplyr
+Imports:
+    httr,
+    jsonlite
+Suggests:
+    roxygen2,
+    devtools,
+    knitr,
+    rmarkdown,
+    testthat
+License: MIT + file LICENSE
+URL: https://github.com/iqis/fountain
+BugReports: https://github.com/iqis/fountain/issues
+Encoding: UTF-8
+RoxygenNote: 6.1.1
+VignetteBuilder: knitr
