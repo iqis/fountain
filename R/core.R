@@ -22,8 +22,8 @@ NULL
 #' @return a list containing the RESTful API request. See httr::parse_url.
 #' @export
 soda <- function(endpoint, domain, uuid, ...){
-  endpoint <- add_protocol(endpoint)
   if (missing(endpoint)) endpoint <- paste("http:/", domain, "resource", uuid, sep = "/" )
+  endpoint <- add_protocol(endpoint)
   request <-  httr::parse_url(endpoint)
   class(request) <- c("soda", "fountain", class(request))
   request
