@@ -1,7 +1,6 @@
 # fountain: R Client to Socrata Open Data API
 
 [![TravisCI](https://travis-ci.org/iqis/fountain.svg?branch=master)](https://travis-ci.org/iqis/fountain)
-[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/iqis/fountain?branch=master&svg=true)](https://ci.appveyor.com/project/iqis/fountain)
 
 This package provides R connectivity to Socrata resources. 
 
@@ -10,7 +9,7 @@ This package provides R connectivity to Socrata resources.
 To install `fountain` from github (requires `devtools` package):
 
 ```R
-devtools:install_github("iqis/fountain")
+devtools::install_github("iqis/fountain")
 ```
 ## Quick Start
 
@@ -104,3 +103,4 @@ baltimore_catalog <- cagalog("https://data.baltimorecity.gov/")
 * Error handling faculty
 * Accept human-readable URLs directly copied from the browser address bar
 * Upload (write) faculty
+* Integrate CKAN, BKAN, etc apart from Socrata?
