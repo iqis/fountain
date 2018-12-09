@@ -33,10 +33,23 @@ bpd_arrests <- soda("https://data.baltimorecity.gov/resource/icjs-e3jg")
 bpd_arrests <- soda(domain = "data.baltimorecity.gov", uuid = "icjs-e3jg")
 ```
 Now we have a request.
-Take a glimps of what would be the query return, using some familiar functions:
+Take a glimps of what would be the query return, using some familiar functions, data as of Dec 8, 2018:
 
 ```R
-# as of 20181208:
+print(bpd_arrests)
+# <Socrata Resource>:  data.baltimorecity.gov/resource/icjs-e3jg 
+# 
+# Name:		 BPD Arrests 
+# Attribution:	 Baltimore Police Department 
+# Created:	 2015-05-05 04:37:12 
+# Last Update:	 2018-12-05 16:50:52 
+# 
+# Description:  
+#   This data represents the top arrest charge of those processed at Baltimore's Central Booking & Intake Facility. This data does not contain those who have been processed through Juvenile Booking. 
+# 
+# Query: 
+# NULL
+# Query returns  46065  rows and  9  columns. 
 
 ncol(bpd_arrests)
 # [1] 9
@@ -107,10 +120,10 @@ Now if we desire to explore other assets from the same domain, use `catalog()`:
 baltimore_catalog <- cagalog("https://data.baltimorecity.gov/")
 
 ```
-### TODO's
+## TODO's
 
 * Error handling faculty
 * Accept human-readable URLs directly copied from the browser address bar
 * Upload (write) faculty
 * Data type parsing from asset metadata
-* Integrate CKAN, BKAN, etc apart from Socrata?
+* Integrate CKAN, BKAN, etc along with Socrata?
