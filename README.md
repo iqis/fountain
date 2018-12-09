@@ -11,21 +11,20 @@ To install `fountain` from github (requires `devtools` package):
 ```R
 devtools::install_github("iqis/fountain")
 ```
+
 ## Quick Start
 
-Baltimore City's open data platform, [Open Baltimore](https://data.baltimorecity.gov/) uses Socrata. Let's use it as an example.
-
-In this case, we choose the [BPD Arrests](https://data.baltimorecity.gov/Public-Safety/BPD-Arrests/3i3v-ibrt) data set. Locate the endpoint in the "API" tab, exclude the ".json" or ".csv" at the end.
-
-First, don't forget to load and attach the package:
+Don't forget to load and attach the package before you start:
 
 ```R
 require(fountain)
 ```
 
-Initiate a request object from asset URL using `soda()`.
+Baltimore City's open data platform, [Open Baltimore](https://data.baltimorecity.gov/) uses Socrata.
 
-If necessary, add credential with optional `credential()`, this is dataset is open to the public: 
+We choose the [BPD Arrests](https://data.baltimorecity.gov/Public-Safety/BPD-Arrests/3i3v-ibrt) data set. Locate the asset endpoint in the "API" tab, exclude the ".json" or ".csv" at the end: "https://data.baltimorecity.gov/resource/icjs-e3jg".
+
+Initiate a request object from asset URL using `soda()`:
 
 ```R
 # use the endpoint
@@ -90,6 +89,16 @@ Looks fine, `collect()` the request to receive a data frame and start working lo
 
 ```R
 bpd_arrest_data <- bpd_arrest %>% collect()
+
+head(bpd_arrests_data)
+#                 arrestdate arresttime
+# 1 2017-12-28T00:00:00.000      01:00
+# 2 2017-12-28T00:00:00.000      01:00
+# 3 2017-12-27T00:00:00.000      09:04
+# 4 2017-12-26T00:00:00.000      21:00
+# 5 2017-12-26T00:00:00.000      21:00
+# 6 2017-12-09T00:00:00.000      07:30
+
 ```
 
 Now if we desire to explore other assets from the same domain, use `catalog()`:
