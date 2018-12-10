@@ -59,3 +59,13 @@ add_protocol <- function(url){
 }
 
 
+#' SODA Data Type Coersion Map
+#'
+#' @noRd
+data_type <- list(checkbox = as.logical,
+                  double = as.double,
+                  floating_timestamp = lubridate::ymd_hms,
+                  money = as.numeric,
+                  number = as.numeric,
+                  text = as.character)
+
