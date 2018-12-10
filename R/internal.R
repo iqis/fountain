@@ -28,16 +28,57 @@ response_content.soda <- function(request, ...){
   httr::content(response.soda(request), "text")
 }
 
+#' Set Limit and Offset of a SODA request
+#'
+#' @param request a SODA request
+#' @param limit limit to the rows
+#' @param offset offset of the rows from the beginning
+#' @param ... dot-dot-dot, ignored
+#' @noRd
+set_query_limit_offset <- function(request, limit, offset = 0, ...){
+  if (has_plain_query(request)) {
+    request$query$`$query` <- paste(request$query$`$query`, "LIMIT ", limit)
+    request$query$`$query` <- paste(request$query$`$query`, "OFFSET ", offset)
+  } else {
+    request$query$`$limit` <- limit
+    request$query$`$offset` <- offset
+  }
+  request
+}
+
+
+#' Get SODA data types of an an asset
+#'
+#' @import jsonlite
+#' @param request a SODA request
+#' @param ... dot-dot-dot, ignored
+#' @export
+soda_data_types <- function(request, ...){
+  request <- set_query_limit_offset(request, limit = 1)
+  jsonlite::fromJSON(response.soda(request)$headers$`x-soda2-types`)
+}
+
 
 #' Retrieve and parse a SODA response as data frame
 #'
-#' @import jsonlite
+#' @import jsonlite readr
 #' @export
 #' @param x a SODA request
 #' @param ... dot-dot-dot, ignored
-as_data_frame.soda <- function(x, ...){
+#' @param guess_type logical, guess data types?
+as_data_frame.soda <- function(x, guess_type = TRUE, ...){
   request <- x
-  as.data.frame.list(jsonlite::fromJSON(response_content.soda(request)))
+  res <- as.data.frame.list(jsonlite::fromJSON(response_content.soda(request)), stringsAsFactors = FALSE)
+  if (guess_type) {
+    for (i in seq_along(res)) {
+      if (is.list(res[[i]])) {
+        res[[i]] <- res[[i]]
+      } else {
+        res[[i]] <- readr::parse_guess(res[[i]])
+        }
+    }
+  }
+  res
 }
 
 
@@ -59,13 +100,5 @@ add_protocol <- function(url){
 }
 
 
-#' SODA Data Type Coersion Map
-#'
-#' @noRd
-data_type <- list(checkbox = as.logical,
-                  double = as.double,
-                  floating_timestamp = lubridate::ymd_hms,
-                  money = as.numeric,
-                  number = as.numeric,
-                  text = as.character)
+# trim_dot_json <- function()
 

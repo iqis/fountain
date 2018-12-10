@@ -4,10 +4,12 @@
 \alias{as_data_frame.soda}
 \title{Retrieve and parse a SODA response as data frame}
 \usage{
-\method{as_data_frame}{soda}(x, ...)
+\method{as_data_frame}{soda}(x, guess_parse = TRUE, ...)
 }
 \arguments{
 \item{x}{a SODA request}
+
+\item{guess_parse}{logical, use `readr::guess_parse()` on columns?}
 
 \item{...}{dot-dot-dot, ignored}
 }

@@ -4,10 +4,12 @@
 \alias{collect.soda}
 \title{Submit a SODA query and retrieve result}
 \usage{
-\method{collect}{soda}(x, ...)
+\method{collect}{soda}(x, guess_parse = TRUE, ...)
 }
 \arguments{
 \item{x}{a SODA request}
+
+\item{guess_parse}{logical, use `readr::guess_parse()` on columns?}
 
 \item{...}{dot-dot-dot, ignored}
 }

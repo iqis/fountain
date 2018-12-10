@@ -87,29 +87,24 @@ show_query.soda <- function(x, ...){
 #' @import dplyr
 #' @export
 #' @param x a SODA request
+#' @param guess_type logical, guess data types?
 #' @param ... dot-dot-dot, ignored
-collect.soda <- function(x, ...){
+collect.soda <- function(x, guess_type = TRUE, ...){
   request <- x
 
-  if (has_plain_query(request)) { # set single frame limit & offset
-    request$query$`$query` <- paste(request$query$`$query`, "LIMIT 50000")
-    request$query$`$query` <- paste(request$query$`$query`, "OFFSET 0")
-  } else {
-    request$query$`$limit` <- 50000
-    request$query$`$offset` <- 0
-  }
+  request <- set_query_limit_offset(request, limit = 50000, offset = 0)
 
   res <- data.frame()
-  single_frame <- as_data_frame.soda(request)
+  single_frame <- as_data_frame.soda(request, guess_type)
 
   suppressWarnings({
     while (nrow(single_frame) > 0) { # paginate through frames
-      if (has_plain_query(request)) {
+      if (has_plain_query(request)) { #set limit/offset in each iteration
         request$query$`$query` <- gsub("OFFSET .*$", paste("OFFSET", nrow(res)), request$query$`$query`)
       } else {
         request$query$`$offset` <- nrow(res)
       }
-      single_frame <- as_data_frame.soda(request)
+      single_frame <- as_data_frame.soda(request, guess_type)
       res <- dplyr::bind_rows(res, single_frame)
     }
   })

@@ -13,11 +13,7 @@
 #' @param ... dot-dot-dot
 head.soda <- function(x, n = 10, ...){
   request <- x
-  if (has_plain_query(request)) {
-    request$query$`$query` <- paste(request$query$`$query`, "LIMIT", n)
-  } else {
-    request$query$`$limit` <- n
-  }
+  set_query_limit_offset(limit = n)
   res <- as_data_frame.soda(request)
   res
 }
