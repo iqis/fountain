@@ -4,6 +4,12 @@
 
 This package provides R connectivity to Socrata resources. 
 
+Some features of `fountain`:
+* 
+* dplyr-ish verbs to construct a query
+* HTTP Basic authentication for private datasets 
+* 
+
 ## Installation
 
 To install `fountain` from github (requires `devtools` package):
@@ -127,3 +133,4 @@ baltimore_catalog <- cagalog("https://data.baltimorecity.gov/")
 * Upload (write) faculty
 * Data type parsing from asset metadata
 * Integrate CKAN, BKAN, etc along with Socrata?
+* OAuth 
