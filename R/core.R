@@ -1,6 +1,5 @@
 #' fountain: R Client to Socrata Open Data API
 #'
-
 #'
 #' @docType package
 #' @name fountain
@@ -24,6 +23,7 @@ NULL
 soda <- function(endpoint, domain, uuid, ...){
   if (missing(endpoint)) endpoint <- paste("http:/", domain, "resource", uuid, sep = "/" )
   endpoint <- add_protocol(endpoint)
+  endpoint <- trim_tail(endpoint)
   request <-  httr::parse_url(endpoint)
   class(request) <- c("soda", "fountain", class(request))
   request

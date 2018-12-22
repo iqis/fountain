@@ -2,7 +2,7 @@
 % Please edit documentation in R/verbs.R
 \name{group_by.soda}
 \alias{group_by.soda}
-\title{Group by}
+\title{Group by one or more variables}
 \usage{
 \method{group_by}{soda}(.data, ...)
 }
@@ -12,5 +12,5 @@
 \item{...}{dot-dot-dot}
 }
 \description{
-Group by
+Group by one or more variables
 }

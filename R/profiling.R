@@ -63,6 +63,7 @@ about.soda <- function(request,...){
 #' @export
 #' @param request a SODA request
 #' @param ... dot-dot-dot
+#' @seealso base::colnames
 colnames.soda <- function(request, ...){
   about(request)$colnames
 }
@@ -91,7 +92,7 @@ ncol.soda <- function(request, ...){
 
 
 
-#' Take a glimpe of the first of an asset
+#' Take a glimpse of the first of an asset
 #'
 #' @import dplyr
 #' @export
@@ -107,7 +108,6 @@ glimpse.soda <- function(request, n = 20){
 #' @export
 #' @param x a SODA request
 #' @param ... dot-dot-dot
-#' print.soda()
 print.soda <- function(x, ...){
   request <- x
   cat("<Socrata Resource>: ", paste(request$hostname, request$path, sep = "/"), "\n\n")

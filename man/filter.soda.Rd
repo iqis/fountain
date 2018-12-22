@@ -2,7 +2,7 @@
 % Please edit documentation in R/verbs.R
 \name{filter.soda}
 \alias{filter.soda}
-\title{Filter rows}
+\title{Return rows with matching conditions}
 \usage{
 \method{filter}{soda}(.data, ...)
 }
@@ -12,5 +12,5 @@
 \item{...}{dot-dot-dot}
 }
 \description{
-Filter rows
+Return rows with matching conditions
 }

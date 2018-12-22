@@ -9,9 +9,9 @@
 #' Select variables
 #'
 #' @import dplyr
-#' @export
 #' @param .data a SODA request
 #' @param ... dot-dot-dot
+#' @export
 select.soda <- function(.data, ...){
   dots <- as.character(match.call(expand.dots = FALSE)$...)
   dots <- gsub("\\s*", "", dots)
@@ -21,7 +21,7 @@ select.soda <- function(.data, ...){
   res
 }
 
-#' Filter rows
+#' Return rows with matching conditions
 #'
 #' @import dplyr
 #' @param .data a SODA request
@@ -54,16 +54,15 @@ filter.soda <- function(.data, ...){
   res
 }
 
-#' Mutate
+#' Add new variables
 #'
 #' @import dplyr
-#' @export
 #' @param .data a SODA request
 #' @param ... dot-dot-dot
+#' @export
 mutate.soda <- function(.data, ...){
   dots <- match.call(expand.dots = FALSE)$...
   # dots <- gsub("\\s*", "", dots)
-
 
   clause <- character()
   for (i in 1:length(dots)) {
@@ -76,7 +75,7 @@ mutate.soda <- function(.data, ...){
   res
 }
 
-#' Group by
+#' Group by one or more variables
 #'
 #' @import dplyr
 #' @export
@@ -93,7 +92,7 @@ group_by.soda <-  function(.data, ...){
   res
 }
 
-#' Summarise
+#' Reduce multiple values down to a single value
 #'
 #' @import dplyr
 #' @param .data a SODA request

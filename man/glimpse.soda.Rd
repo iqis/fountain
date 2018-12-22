@@ -2,7 +2,7 @@
 % Please edit documentation in R/profiling.R
 \name{glimpse.soda}
 \alias{glimpse.soda}
-\title{Take a glimpe of the first of an asset}
+\title{Take a glimpse of the first of an asset}
 \usage{
 \method{glimpse}{soda}(request, n = 20)
 }
@@ -12,5 +12,5 @@
 \item{n}{number of rows to query}
 }
 \description{
-Take a glimpe of the first of an asset
+Take a glimpse of the first of an asset
 }

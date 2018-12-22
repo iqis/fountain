@@ -2,7 +2,7 @@
 % Please edit documentation in R/verbs.R
 \name{summarise.soda}
 \alias{summarise.soda}
-\title{Summarise}
+\title{Reduce multiple values down to a single value}
 \usage{
 \method{summarise}{soda}(.data, ...)
 }
@@ -12,5 +12,5 @@
 \item{...}{dot-dot-dot}
 }
 \description{
-Summarise
+Reduce multiple values down to a single value
 }

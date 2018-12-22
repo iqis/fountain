@@ -2,7 +2,7 @@
 % Please edit documentation in R/verbs.R
 \name{mutate.soda}
 \alias{mutate.soda}
-\title{Mutate}
+\title{Add new variables}
 \usage{
 \method{mutate}{soda}(.data, ...)
 }
@@ -12,5 +12,5 @@
 \item{...}{dot-dot-dot}
 }
 \description{
-Mutate
+Add new variables
 }

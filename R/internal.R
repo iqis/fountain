@@ -99,6 +99,10 @@ add_protocol <- function(url){
   url
 }
 
-
-# trim_dot_json <- function()
+#' If has .json or .csv in endpoint, remove
+#'
+#' @noRd
+trim_tail <- function(url){
+  gsub("\\..*$","", url)
+}
 

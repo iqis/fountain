@@ -9,8 +9,7 @@
 \arguments{
 \item{x}{a SODA request}
 
-\item{...}{dot-dot-dot
-print.soda()}
+\item{...}{dot-dot-dot}
 }
 \description{
 Print brief information about an asset targeted by a SODA request to the screen

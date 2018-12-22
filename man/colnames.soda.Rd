@@ -14,3 +14,6 @@
 \description{
 Column names
 }
+\seealso{
+base::colnames
+}
