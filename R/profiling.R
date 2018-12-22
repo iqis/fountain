@@ -13,7 +13,7 @@
 #' @param ... dot-dot-dot
 head.soda <- function(x, n = 10, ...){
   request <- x
-  set_query_limit_offset(limit = n)
+  request <- set_query_limit_offset(request, limit = n)
   res <- as_data_frame.soda(request)
   res
 }
@@ -28,7 +28,6 @@ head.soda <- function(x, n = 10, ...){
 #' @param ... dot-dot-dot
 about.soda <- function(request,...){
   res <- list()
-
   # get row count
   nrow_request <- request
   if (has_plain_query(nrow_request)) { # row count unavailable for plain queries

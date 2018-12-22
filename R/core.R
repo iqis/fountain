@@ -92,7 +92,6 @@ show_query.soda <- function(x, ...){
 #' @param ... dot-dot-dot, ignored
 collect.soda <- function(x, guess_type = TRUE, ...){
   request <- x
-
   request <- set_query_limit_offset(request, limit = 50000, offset = 0)
 
   res <- data.frame()
