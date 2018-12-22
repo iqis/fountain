@@ -84,6 +84,7 @@ show_query.soda <- function(x, ...){
 
 
 #' Submit a SODA query and retrieve result
+#'
 #' @import dplyr
 #' @export
 #' @param x a SODA request
