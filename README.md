@@ -134,3 +134,5 @@ baltimore_catalog <- cagalog("https://data.baltimorecity.gov/")
 * Data type parsing from asset metadata
 * Integrate CKAN, BKAN, etc along with Socrata?
 * OAuth 
+* `OR` and `NOT` support in filter()
+* OData API

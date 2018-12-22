@@ -21,6 +21,7 @@ select.soda <- function(.data, ...){
   res
 }
 
+# TODO add `OR` and `NOT` capability
 #' Return rows with matching conditions
 #'
 #' @import dplyr
@@ -29,9 +30,11 @@ select.soda <- function(.data, ...){
 #' @export
 filter.soda <- function(.data, ...){
   dots <- as.character(match.call(expand.dots = FALSE)$...)
+
   dots <- gsub("\\s*", "", dots) # remove blankspace
   dots <- gsub("==", "=", dots)
-
+  dots <- gsub("!", " NOT ", dots)
+  dots <- gsub("\\|", " OR ", dots)
   clause <- paste(dots, collapse = " AND ")
 
   res <- .data
