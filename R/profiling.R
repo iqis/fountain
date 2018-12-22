@@ -123,6 +123,6 @@ print.soda <- function(x, ...){
   if (!is.null(request$query$`$group`)) {
     cat("(dimension unavailable for aggregate queries.)")
   } else {
-    cat("Query returns ", about_it$dim$nrow, " rows and ", about_it$dim$ncol, " columns. ")
+    cat("\tQuery returns ", about_it$dim$nrow, " rows and ", about_it$dim$ncol, " columns. ")
   }
 }

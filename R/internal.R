@@ -65,19 +65,9 @@ soda_data_types <- function(request, ...){
 #' @export
 #' @param x a SODA request
 #' @param ... dot-dot-dot, ignored
-#' @param guess_type logical, guess data types?
 as_data_frame.soda <- function(x, guess_type = TRUE, ...){
   request <- x
   res <- as.data.frame.list(jsonlite::fromJSON(response_content.soda(request)), stringsAsFactors = FALSE)
-  if (guess_type) {
-    for (i in seq_along(res)) {
-      if (is.list(res[[i]])) {
-        res[[i]] <- res[[i]]
-      } else {
-        res[[i]] <- readr::parse_guess(res[[i]])
-        }
-    }
-  }
   res
 }
 

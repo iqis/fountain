@@ -109,6 +109,16 @@ collect.soda <- function(x, guess_type = TRUE, ...){
     }
   })
 
+  if (guess_type) {
+    for (i in seq_along(res)) {
+      if (is.list(res[[i]])) {
+        res[[i]] <- res[[i]]
+      } else {
+        res[[i]] <- readr::parse_guess(res[[i]])
+      }
+    }
+  }
+
   res
 }
 
