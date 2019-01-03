@@ -66,3 +66,13 @@ ncol <- function(...) UseMethod("ncol")
 #' @param ... dot-dot-dot
 #' @export
 ncol.default <- function(...) base::ncol(...)
+
+#' @inherit readr::write_csv
+#' @param ... dot-dot-dot
+#' @export
+write_csv <- function(...) UseMethod("write_csv")
+
+#' @inherit readr::write_csv
+#' @param ... dot-dot-dot
+#' @export
+write_csv.default <- function(...) readr::write_csv(...)

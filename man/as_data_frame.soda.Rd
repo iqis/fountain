@@ -9,8 +9,6 @@
 \arguments{
 \item{x}{a SODA request}
 
-\item{guess_type}{logical, guess data types?}
-
 \item{...}{dot-dot-dot, ignored}
 }
 \description{
