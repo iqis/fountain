@@ -4,7 +4,7 @@
 \alias{as_data_frame.soda}
 \title{Retrieve and parse a SODA response as data frame}
 \usage{
-\method{as_data_frame}{soda}(x, guess_type = TRUE, ...)
+\method{as_data_frame}{soda}(x, ...)
 }
 \arguments{
 \item{x}{a SODA request}

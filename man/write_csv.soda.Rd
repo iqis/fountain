@@ -4,7 +4,7 @@
 \alias{write_csv.soda}
 \title{Write a SODA query return to CSV file}
 \usage{
-\method{write_csv}{soda}(x, path, na = "NA")
+\method{write_csv}{soda}(x, path, na = "NA", ...)
 }
 \arguments{
 \item{x}{a SODA query}
@@ -12,6 +12,8 @@
 \item{path}{path in file system to write to}
 
 \item{na}{String used for missing values}
+
+\item{...}{dot-dot-dot}
 }
 \description{
 Write a SODA query return to CSV file

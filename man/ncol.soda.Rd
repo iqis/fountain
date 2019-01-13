@@ -12,13 +12,15 @@
 \item{...}{dot-dot-dot}
 }
 \value{
-an \code{\link{integer}} of length 1 or \code{\link{NULL}}.
+an \code{\link{integer}} of length 1 or \code{\link{NULL}}, the
+  latter only for \code{ncol} and \code{nrow}.
 }
 \description{
 \code{nrow} and \code{ncol} return the number of rows or columns
   present in \code{x}.
   \code{NCOL} and \code{NROW} do the same treating a vector as
-  1-column matrix.
+  1-column matrix, even a 0-length vector, compatibly with
+  \code{\link{as.matrix}()} or \code{\link{cbind}()}, see the example.
 }
 \examples{
 ma <- matrix(1:12, 3, 4)
@@ -28,6 +30,14 @@ ncol(ma)   # 4
 ncol(array(1:24, dim = 2:4)) # 3, the second dimension
 NCOL(1:12) # 1
 NROW(1:12) # 12
+
+## as.matrix() produces 1-column matrices from 0-length vectors,
+## and so does cbind() :
+dim(as.matrix(numeric())) # 0 1
+dim(    cbind(numeric())) # ditto
+## consequently, NCOL(.) gives 1, too :
+NCOL(numeric()) # 1 and hence
+NCOL(NULL)      # 1
 }
 \references{
 Becker, R. A., Chambers, J. M. and Wilks, A. R. (1988)

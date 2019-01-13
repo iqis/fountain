@@ -65,12 +65,14 @@ soda_data_types <- function(request, ...){
 #' @export
 #' @param x a SODA request
 #' @param ... dot-dot-dot, ignored
-as_data_frame.soda <- function(x, guess_type = TRUE, ...){
+as_data_frame.soda <- function(x, ...){
   request <- x
   res <- as.data.frame.list(jsonlite::fromJSON(response_content.soda(request)), stringsAsFactors = FALSE)
   res
 }
 
+
+#### Query Building ####
 
 #' Check if request uses plain SoQL query string
 #'
