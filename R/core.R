@@ -129,43 +129,6 @@ collect.soda <- function(x, guess_type = TRUE, ...){
 }
 
 
-#' Write a SODA query return to CSV file
-#'
-#' @import readr
-#' @param x a SODA query
-#' @param path path in file system to write to
-#' @param na String used for missing values
-#' @param ... dot-dot-dot
-#' @export
-write_csv.soda <- function(x, path, na = "NA", ...) {
-
-  if (file.exists(path)) stop("file already exists.")
-
-  # directly copied from collect.soda()
-  request <- x
-  request <- set_query_limit_offset(request, limit = 50000, offset = 0)
-
-  single_frame <- as_data_frame.soda(request)
-  readr::write_csv(x = single_frame, path = path, na = na, append = FALSE)
-  offset_i <- 0
-
-  suppressWarnings({
-    while (nrow(single_frame) > 0) { # paginate through frames
-      if (has_plain_query(request)) { #set limit/offset in each iteration
-        request$query$`$query` <- gsub("OFFSET .*$", paste("OFFSET", offset_i), request$query$`$query`)
-      } else {
-        request$query$`$offset` <- offset_i
-      }
-      single_frame <- as_data_frame.soda(request, guess_type = FALSE)
-      readr::write_csv(x = single_frame, path = path, na = na, append = TRUE)
-
-      offset_i <- offset_i + 50000
-
-    }
-  })
-}
-
-
 # TODO add `very_rich` option, through which queries metadata on assets through "identifier" field
 # and merge with original data.
 
