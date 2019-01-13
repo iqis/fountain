@@ -12,9 +12,16 @@
 response.soda <- function(request, ...){
   user <- attributes(request)$user
   password <- attributes(request)$password
-  httr::GET(httr::build_url(request),
-            `if`(is.null(user), NULL, httr::authenticate(user = user, password = password))
+
+  res <- httr::GET(httr::build_url(request),
+            `if`(is.null(user),
+                 NULL,
+                 httr::authenticate(user = user, password = password))
   )
+
+  `if`(httr::http_error(res),
+       stop(paste("HTTP error, status code:", res$status_code)),
+       return(res))
 }
 
 
